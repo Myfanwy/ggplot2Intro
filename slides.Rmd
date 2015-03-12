@@ -1,0 +1,27 @@
+---
+title: "Introduction to ggplot2"
+author: "Myfanwy Johnston"
+date: "Wednesday, March 11, 2015"
+output: ioslides_presentation
+---
+
+Getting started
+-----
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+require(ggplot2)
+
+# Data Note: ggplot2 requires data.frames
+```
+----
+```{r, eval=TRUE}
+library(ggplot2)
+data(msleep)
+alt <- ggplot(msleep)
+
+ggplot(msleep, aes(x=bodywt, y=brainwt)) + geom_point()
+# ... is the same as: 
+alt + geom_point(aes(x=bodywt, y=brainwt))
+```
+
