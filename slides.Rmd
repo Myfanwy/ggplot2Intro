@@ -10,8 +10,8 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache=TRUE)
 require(ggplot2)
-#setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data") #PC
-setwd("~/Dropbox/GitHubRepos/ggplot2Intro/data") #mac
+setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data") #PC
+# setwd("~/Dropbox/GitHubRepos/ggplot2Intro/data") #mac
 ```
 
 ```{r, echo=FALSE, cache=TRUE}
