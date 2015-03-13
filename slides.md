@@ -1,26 +1,12 @@
----
-title: "Introduction to ggplot2"
-author: "Myfanwy Johnston"
-date: "Wednesday, March 11, 2015"
-output: 
-  ioslides_presentation:
-      widescreen: true
-      keep_md: true
----
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache=TRUE)
-require(ggplot2)
-library(DiagrammeR)
-setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data") #PC
+# Introduction to ggplot2
+Myfanwy Johnston  
+Wednesday, March 11, 2015  
 
-```
 
-```{r, echo=FALSE, cache=TRUE}
-setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data")
-data(diamonds)
-```
+
 ##Getting started
-```{r, eval=FALSE}
+
+```r
 install.packages("ggplot2")
 require(ggplot2)
 
@@ -85,7 +71,8 @@ require(ggplot2)
 
 Full ggplot() specification:
 ----
-```{r, eval=FALSE}
+
+```r
 ggplot() +
   layer(
     data = diamonds, mapping = aes(x= carat, y = price, color = cut, alpha = 0.5) ,
@@ -103,13 +90,7 @@ Translation: using the diamonds data set, map _'carat'_ to horizontal (x) positi
 
 The code on that last slide gives us {.build}
 ---
-```{r, echo=FALSE}
-ggplot(diamonds, aes(carat, price, color = cut, alpha = 0.5)) + geom_point() +
-  stat_smooth(method = lm) +
-  scale_y_log10() +
-  scale_x_log10()
-
-```
+![](slides_files/figure-html/unnamed-chunk-4-1.png) 
 ...a mess
 
 
@@ -118,7 +99,8 @@ ggplot(diamonds, aes(carat, price, color = cut, alpha = 0.5)) + geom_point() +
 ## The magic of defaults
 
 Allow us to simplify the full ggplot() specification to:
-```{r, eval=FALSE}
+
+```r
 ggplot(diamonds, aes(carat, price)) + geom_point() +
   stat_smooth(method = lm) +
   scale_y_log10() +
@@ -157,11 +139,13 @@ ggplot(diamonds, aes(carat, price)) + geom_point() +
 
 ## ggplot2 FAQ (good name for a band?)
   * How do I add error bars?
-```{r, eval=FALSE, cache=TRUE}
+
+```r
 p + geom_errorbar(aes(x = , ymax = , ymin = )) #required aesthetics
 ```
   * How do I save a plot I've made?
-```{r, eval = FALSE}
+
+```r
 ggsave("plot.png" , plot = last_plot() , width = , height = , units = )
 ```
   * What should I do to make my life easier when using ggplot2?
@@ -177,3 +161,4 @@ ggsave("plot.png" , plot = last_plot() , width = , height = , units = )
 This repo on [GitHub](https://github.com/Myfanwy/ggplot2Intro) - all materials, including slides
 <br>
 Also has links to more teaching resources on all these things
+## 

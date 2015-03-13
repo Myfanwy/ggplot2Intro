@@ -1,0 +1,86 @@
+---
+title: "Introduction to ggplot2"
+author: "Myfanwy Johnston"
+date: "Wednesday, March 11, 2015"
+output: beamer_presentation
+---
+```{r setup, include=FALSE}
+require(ggplot2)
+```
+Getting started
+-----
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+require(ggplot2)
+data(diamonds)
+
+# Data Note: ggplot2 requires data.frames
+```
+----
+```{r, eval=TRUE, warning=FALSE, fig.height=2}
+<div> <small>
+data(msleep)
+alt <- ggplot(msleep)
+ggplot(msleep, aes(x=bodywt, y=brainwt)) + geom_point()
+# ... is the same as: 
+alt + geom_point(aes(x=bodywt, y=brainwt))
+</small></div>
+```
+
+Arguments of ggplot( , layer())
+---
+* data
+* mapping: specifies the mapping of variables to aesthetics
+  - example: aes(x = , y = , color = , shape = , fill = ,
+* geometry: i.e. the type of graph.  Ex: bar, histogram, line, point, etc
+* statistic: the statistical transformation.  Default is 'identity', but lots of others possible: bin, density, boxplot, contour
+* facet specification: do you want to plot subsets of your data?
+* scales: one for each aesthetic mapping (x scale, y scale, scale transformation of shapes)
+* coordinate system: default is Cartesian
+
+Full ggplot() specification:
+----
+```{r, eval=FALSE}
+ggplot() +
+  layer(
+    data = diamonds, mapping = aes(x= carat, y = price) ,
+    geom = "point" , stat = "identity" , position = "identity"
+    ) +
+  layer(
+   data = diamonds, mapping = aes(x = carat, y = price) ,
+   geom = "smooth" , stat = "smooth" , method = lm, position = "identity" ,
+   ) +
+  scale_y_log10() +
+  scale_x_log10() +
+  coord_cartesian()
+```
+Translation: using the diamonds data set, map 'carat' to horizontal (x) position, and price to vertical (y) position.  Display the raw data (identity transformation) with points, then add a smoothing line with all of the same data mapping onto a log-transformed axis scale.
+
+Gives us
+---
+```{r, echo=FALSE}
+ggplot(diamonds, aes(carat, price)) + geom_point() +
+  stat_smooth(method = lm) +
+  scale_y_log10() +
+  scale_x_log10()
+
+```
+
+Magic of defaults
+---
+Allow us to simplify the full ggplot() specification to:
+```{r, eval=FALSE}
+ggplot(diamonds, aes(carat, price)) + geom_point() +
+  stat_smooth(method = lm) +
+  scale_y_log10() +
+  scale_x_log10()
+```
+
+A note on qplot
+---
+>- Makes strong assumptions in order to reduce the amount of typing
+>- Mimics syntax of plot()
+>- In my experience, using qplot() at the beginning delays full understanding of ggplot() syntax
+>- Recommend starting with ggplot(), then relying on qplot() once you're comfortable with full ggplot()
+
