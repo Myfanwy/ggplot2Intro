@@ -1,7 +1,9 @@
 ## ggplot demo ##
-library(dplyr)
-library(lubridate)
-library(ggplot2)
+require(dplyr)
+require(lubridate)
+require(ggplot2)
+require(Hmisc)
+
 
 # set path/relative paths
 #setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data") #PC
@@ -39,15 +41,22 @@ Hrdets <- dets %>% # creates a table of number of detections by dayHr
   arrange(., N) %>%
   ungroup()
 
-g <- ggplot(Hrdets, aes(x = DayHr, y = N)) + geom_point()
+g <- ggplot(Hrdets, aes(x = DayHr, y = N)) + 
+  geom_point(aes(color = as.factor(TagID)))
 g
-g + geom_point(aes(color = TagID, shape = TagID, size = 1.5)) # ugly plot, but helps me figure things out
+g + geom_point(aes(color = as.factor(TagID), size = 1.5)) # ugly plot, but helps me figure things out
+g
+
+# Prep for Violin/Jitter plot: need to generate levels from factors to be able to display individual violins
+r_table <- table(Hrdets$TagID) #index
+r_levels <- names(r_table)[order(r_table)] #generate levels
+Hrdets$TagID2 <- factor(Hrdets$TagID, levels = r_levels) #add column of levels in order
 
 # Violin/Jitter Plot
-g <- ggplot(Hrdets, aes(x = TagID, y=N)) + 
-  geom_jitter(alpha = 0.5, aes(color = TagID), position = position_jitter(width = .2)) + 
+g <- ggplot(Hrdets, aes(x = TagID2, y=N)) + 
+  geom_jitter(alpha = 0.5, aes(color = as.factor(TagID)), position = position_jitter(width = .2)) + 
   guides(fill=FALSE) + labs(x="", y="Number of Detections", title="V5 Tag Detections Over Two Weeks") +
-  geom_violin(alpha = 0.5, color="gray") + coord_flip() + theme(legend.position="none")
+  geom_violin(aes(alpha = 0.5, color="gray")) + coord_flip() + theme(legend.position="none")
 g
 
 # Plot 2: Average Daily Temperature Across Tanks
@@ -62,12 +71,13 @@ p + ggtitle("Average Daily Temperature Was Similar Across Tanks")
 p + geom_line(alpha = 0.5, linetype = 6, size = 1.5)
 
 # Make different kind of graph to show the same data: ribbon plot
-
+temp
 p <- ggplot(temp, aes(x = Date, y=Mean))
 p <- p + geom_ribbon(aes(ymin=Min, ymax = Max, fill = Hobo, alpha = 0.5))
-p + stat_summary(geom = "ribbon", fun.data = "median_hilow")
+p <- p + stat_summary(geom = "ribbon", fun.data = "median_hilow")
+p
 =============================================================
-# # Plot 3: Detections vs. Temperature
+# # Plot 3: Detections vs. Temperature - does not work well currently
 # 
 # Hrdets
 # class(Hrdets$DayHr)
@@ -84,14 +94,12 @@ p + stat_summary(geom = "ribbon", fun.data = "median_hilow")
 td
 g <- ggplot(td, aes(x = TagID, y  = n)) + geom_bar(stat = "identity")
 g
-g + scale_y_log10() # these data are best suited for a table, not a graph
-
+g + scale_y_log10() # these data are so small, best suited for a table, not a graph
 # to change the order, have to set factor levels to be in the right order from the getgo, or map
 # to a re-ordered x-axis value (need something else in the dataframe with which to order it, though:
 
 g <- ggplot(td, aes(x = reorder(TagID,n), y  = n)) + geom_bar(aes(fill = cols, alpha = 0.5) , stat = "identity")
 g
-
 # How to get rid of legend:
 g + theme(legend.position = "none")
 
@@ -108,6 +116,4 @@ ggplot(tl, aes(x=reorder(TagID, LifeDays), y=LifeDays, width=0.5)) + # data, map
   
               labs(x="Tag", y="Days", title="Tag Life is Not Particularly Impressive 
                 After A Year on the Shelf") #labels to polish
-
-
 ##
