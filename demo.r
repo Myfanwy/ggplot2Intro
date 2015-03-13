@@ -4,8 +4,8 @@ library(lubridate)
 library(ggplot2)
 
 # set path/relative paths
-setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data") #PC
-
+#setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data") #PC
+setwd("~/Dropbox/GitHubRepos/ggplot2Intro/data") #MAC
 
 # Load data
 

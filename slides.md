@@ -161,4 +161,3 @@ ggsave("plot.png" , plot = last_plot() , width = , height = , units = )
 This repo on [GitHub](https://github.com/Myfanwy/ggplot2Intro) - all materials, including slides
 <br>
 Also has links to more teaching resources on all these things
-## 
