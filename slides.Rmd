@@ -4,7 +4,6 @@ author: "Myfanwy Johnston"
 date: "Friday, March 13, 2015"
 output:
   ioslides_presentation:
-    keep_md: yes
     widescreen: yes
 ---
 ```{r setup, include=FALSE}
@@ -102,7 +101,7 @@ Translation: using the diamonds data set, map _'carat'_ to horizontal (x) positi
 
 The code on that last slide gives us {.build}
 ---
-```{r, echo=FALSE}
+```{r, echo=FALSE, cache=TRUE}
 ggplot(diamonds, aes(carat, price, color = cut, alpha = 0.5)) + geom_point() +
   stat_smooth(method = lm) +
   scale_y_log10() +
