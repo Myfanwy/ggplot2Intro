@@ -2,10 +2,10 @@
 title: "Introduction to ggplot2"
 author: "Myfanwy Johnston"
 date: "Friday, March 13, 2015"
-output: 
+output:
   ioslides_presentation:
-      widescreen: true
-      keep_md: true
+    keep_md: yes
+    widescreen: yes
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache=TRUE)
