@@ -2,6 +2,8 @@
 
 Materials accompanying the presentation ("Introduction to ggplot2") at the Davis R-Users Group Meeting on March 13, 2015.
 
+* To follow along with the slides, go to: [](http://www.voovarb.com/ggplot2Intro/slides.html#11)
+* To download with the slides in pdf form, go to: [](http://www.voovarb.com/ggplot2Intro/slides.pdf)
 * For the ggplot2 demo code, see the demo.r file (requires sourcing the data folder to generate plots)
 
 ## Additional Resources
