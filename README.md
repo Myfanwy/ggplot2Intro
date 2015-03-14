@@ -1,4 +1,4 @@
-# Introduction to graphing with the ggplot2 Package
+# Introduction to graphing with the ggplot2 package
 
 Materials accompanying the presentation ("Introduction to ggplot2") at the Davis R-Users Group Meeting on March 13, 2015.
 
