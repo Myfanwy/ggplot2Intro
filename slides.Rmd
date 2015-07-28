@@ -17,7 +17,7 @@ setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data") #PC
 setwd("C:/Users/Myfanwy/Dropbox/GitHubRepos/ggplot2Intro/data")
 data(diamonds)
 ```
-##Getting started
+## Getting started
 ```{r, eval=FALSE}
 install.packages("ggplot2")
 require(ggplot2)
@@ -29,7 +29,7 @@ require(ggplot2)
  - Layerable graphics with an underlying structure to the syntax
 
 
-##Arguments of ggplot(..., layer())
+## Arguments of ggplot(..., layer())
 
 ### Data 
 
