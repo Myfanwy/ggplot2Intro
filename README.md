@@ -2,10 +2,10 @@
 
 Materials accompanying the presentation ("Introduction to ggplot2") at the Davis R-Users Group Meeting on March 13, 2015.
 
-* To follow along with the slides, go to: http://www.voovarb.com/ggplot2Intro/slides.html#1
-* To download with the slides in pdf form (sorry edges are a bit cut off), go to: http://www.voovarb.com/ggplot2Intro/slides.pdf
+* To follow along with the slides, go to: http://myfanwy.github.io/ggplot2Intro/slides.html#1
+* To download with the slides in pdf form (sorry edges are a bit cut off), go to: http://myfanwy.github.io/ggplot2Intro/slides.pdf
 * For the ggplot2 demo code, see the demo.r file (requires sourcing the data folder to generate plots)
-* Visual Schematic of ggplot() syntax: http://www.voovarb.com/ggplot2Intro/ggplot_structure.png
+* Visual Schematic of ggplot() syntax: http://myfanwy.github.io/ggplot2Intro/ggplot_structure.png
 
 ## Additional Resources
 
